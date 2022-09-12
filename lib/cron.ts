@@ -74,7 +74,11 @@ const sendScheduledMessages = async () => {
         [
           yesArray[Math.floor(Math.random() * yesArray.length)],
           noArray[Math.floor(Math.random() * noArray.length)],
-        ]
+        ],
+        {
+          is_anonymous: false,
+          allows_multiple_answers: false,
+        }
       );
     }, 1000);
   } catch (error) {
