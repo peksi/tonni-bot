@@ -10,8 +10,8 @@ import { Update, Message } from "typegram";
 var _ = require('lodash');
 
 const validChatId = (chatId) => {
-    return true
-    // return chatId === -416691354
+//    return true
+     return chatId === -1001279011020
 }
 
 type Data = {
