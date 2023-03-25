@@ -95,7 +95,6 @@ const job = new CronJob(
 
 const cron = () => {
   job.start();
-  sendScheduledMessages();
 };
 
 export default cron;

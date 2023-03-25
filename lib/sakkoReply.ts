@@ -4,8 +4,7 @@ import { fi } from "date-fns/locale";
 import { Context } from "telegraf";
 import { Update, Message } from "telegraf/typings/core/types/typegram";
 import { db } from "..";
-
-const _ = require("lodash");
+import _ from "lodash";
 
 export const sakkoReply = async (
   ctx: Context<{

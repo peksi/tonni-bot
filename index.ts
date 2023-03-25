@@ -6,14 +6,19 @@ import { fi } from "date-fns/locale";
 import { Update, Message } from "typegram";
 import cron from "./lib/cron";
 import { sakkoReply } from "./lib/sakkoReply";
+import _ from "lodash";
 
-var _ = require("lodash");
-
-const validChatId = (chatId) => {
+const validChatId = (chatId: any) => {
   //    return true
 
   return chatId === parseInt(process.env.CHAT_ID ?? "");
 };
+
+interface Entry {
+  userId: number;
+  timestamp: Date;
+  firstName: string;
+}
 
 type Data = {
   log: {
@@ -31,7 +36,17 @@ type Data = {
 require("dotenv").config();
 
 // Use JSON file for storage
-const file = join(__dirname, "db.json");
+
+// if docker, use /data/db.json otherwise ./db.json
+
+const file = process.env.DOCKER
+  ? "/usr/src/app/db/db.json"
+  : join(__dirname, "./db.json");
+
+console.log(process.env.DOCKER ? "yes docker" : "no docker");
+console.log(process.env);
+console.log(__dirname, file);
+
 const adapter = new JSONFile<Data>(file);
 export const db = new Low(adapter);
 
@@ -92,7 +107,7 @@ const statsReply = async (
     .value();
 
   const retString: string[] = groupedEntries.map((entry) => {
-    const agoString = formatDistance(parseISO(entry.last), new Date(), {
+    const agoString = formatDistance(parseISO(entry.last as any), new Date(), {
       addSuffix: true,
       locale: fi,
     });

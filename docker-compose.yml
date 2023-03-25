@@ -1,0 +1,13 @@
+version: "3.4"
+
+services:
+  tonnibot:
+    image: tonni-bot
+    restart: always
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    environment:
+      NODE_ENV: production
+    volumes:
+      - ./db/:/usr/src/app/db/
