@@ -5,7 +5,6 @@
   "author": "Pekka Lammi",
   "license": "MIT",
   "devDependencies": {
-    "@types/node": "^15.6.1",
     "ts-node-dev": "^1.1.6"
   },
   "scripts": {
@@ -15,6 +14,7 @@
   },
   "dependencies": {
     "@types/lodash": "^4.14.170",
+    "@types/node": "^15.6.1",
     "axios": "^0.27.2",
     "cron": "^2.1.0",
     "date-fns": "^2.22.1",

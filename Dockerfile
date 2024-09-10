@@ -1,9 +1,7 @@
-FROM node:18-alpine
+FROM node:lts-alpine
 ENV NODE_ENV=production
 ENV DOCKER=true
 WORKDIR /usr/src/app
-
-
 
 
 # copy package.json and yarn.lock to the container
